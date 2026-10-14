@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        /* Container style for the embedded GitHub page */
+        #embedded-container {
+            width: 100%;
+            height: 100vh;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- This iframe will serve as the host for the GitHub page and its internal code -->
+    <iframe id="embedded-container" src=""></iframe>
+
+    <script>
+        // 1. Define your GitHub details
+        const username = 'zortman';
+        const repo = 'cdn';
+        const branch = 'main'; // or 'master'
+        const filePath = 'main.html'; // The HTML file inside your repository
+
+        // 2. We use GitHack as a proxy so the browser renders the page 
+        // instead of displaying raw code text.
+        const proxyUrl = `https://githack.com{username}/${repo}/${branch}/${filePath}`;
+
+        // 3. Inject the safe URL into the container frame to load it seamlessly
+        document.getElementById('embedded-container').src = proxyUrl;
+    </script>
+
+</body>
+</html>
